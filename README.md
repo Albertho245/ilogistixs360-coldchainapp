@@ -3,7 +3,7 @@
 
 ![Logo](webapp/img/logo_logist.jpg)
 
-> **iLogistixs 360** es una solución inteligente desarrollada sobre **SAP Business Technology Platform (BTP)** para optimizar la **cadena de frío**, integrando trazabilidad, transporte, consumo y satisfacción del cliente en una única plataforma web moderna basada en **SAPUI5**.
+> **iLogistixs 360** es una solución inteligente desarrollada sobre **SAP Business Technology Platform (BTP)** para optimizar la **cadena de transporte**, integrando trazabilidad, transporte, consumo y satisfacción del cliente en una única plataforma web moderna basada en **SAPUI5**.
 
 ---
 
