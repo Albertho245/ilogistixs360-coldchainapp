@@ -1,0 +1,48 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Distribucion"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="distribucionPage"
+    title="Distribución"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    showHeader="true">
+
+    <VBox class="sapUiSmallMargin">
+
+      <!-- SECCIÓN: Entregas en Ruta -->
+      <Title text="Entregas en Ruta" level="H2" class="sectionTitle" />
+      <Panel headerText="Monitoreo de Entregas" class="customPanel">
+        <HBox justifyContent="SpaceAround">
+          <ObjectStatus title="Camiones Activos" text="{distribucion>/entregas/camionesActivos}" state="Success" icon="sap-icon://shipping-status" />
+          <ObjectStatus title="Entregas en Proceso" text="{distribucion>/entregas/entregasEnProceso}" state="Information" icon="sap-icon://journey-arrive" />
+        </HBox>
+        <Text text="{distribucion>/entregas/monitoreo}" />
+      </Panel>
+
+      <!-- SECCIÓN: Estado de Vehículos -->
+      <Title text="Estado de Vehículos" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel headerText="Condición de Vehículos" class="customPanel">
+        <HBox justifyContent="SpaceAround">
+          <ObjectStatus title="Vehículos OK" text="{distribucion>/vehiculos/vehiculosOK}" state="Success" icon="sap-icon://accept" />
+          <ObjectStatus title="Requieren Mantenimiento" text="{distribucion>/vehiculos/mantenimiento}" state="Warning" icon="sap-icon://alert" />
+        </HBox>
+        <Text text="{distribucion>/vehiculos/detalle}" />
+      </Panel>
+
+      <!-- SECCIÓN: Rutas y Condiciones -->
+      <Title text="Rutas y Condiciones" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel headerText="Estado de Rutas" class="customPanel">
+        <HBox justifyContent="SpaceBetween">
+          <ObjectStatus title="Rutas Estables" text="{distribucion>/rutas/estables}" state="Success" icon="sap-icon://map" />
+          <ObjectStatus title="Rutas con Demoras" text="{distribucion>/rutas/demoras}" state="Error" icon="sap-icon://lateness" />
+        </HBox>
+        <Text text="{distribucion>/rutas/detalle}" />
+      </Panel>
+
+    </VBox>
+  </Page>
+</mvc:View>

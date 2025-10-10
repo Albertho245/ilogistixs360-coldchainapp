@@ -1,0 +1,48 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Consumo"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="consumoPage"
+    title="Consumo"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    showHeader="true">
+
+    <VBox class="sapUiSmallMargin sapUiResponsiveMargin">
+
+      <!-- CALIDAD -->
+      <Title text="Calidad y Satisfacción" level="H2" class="sectionTitle" />
+      <Panel headerText="Calidad del Servicio" class="customPanel">
+        <HBox justifyContent="SpaceAround">
+          <ObjectStatus title="Satisfacción del Cliente" text="{consumo>/calidad/satisfaccion}" state="Success" icon="sap-icon://employee-approvals" />
+          <ObjectStatus title="Reportes de Calidad" text="{consumo>/calidad/reportes}" state="Success" icon="sap-icon://quality-issue" />
+        </HBox>
+        <Text text="{consumo>/calidad/descripcion}" />
+      </Panel>
+
+      <!-- TRAZABILIDAD -->
+      <Title text="Trazabilidad del Producto" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel headerText="Seguimiento del Lote" class="customPanel">
+        <HBox justifyContent="SpaceAround">
+          <ObjectStatus title="Lote Consumido" text="{consumo>/trazabilidad/lote}" state="Information" icon="sap-icon://batch-payments" />
+          <ObjectStatus title="Ubicación Final" text="{consumo>/trazabilidad/ubicacionFinal}" state="Information" icon="sap-icon://home" />
+        </HBox>
+        <Text text="{consumo>/trazabilidad/descripcion}" />
+      </Panel>
+
+      <!-- ENCUESTAS -->
+      <Title text="Encuestas Post-Consumo" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel headerText="Evaluaciones de Clientes" class="customPanel">
+        <HBox justifyContent="SpaceAround">
+          <ObjectStatus title="Encuestas Recibidas" text="{consumo>/encuestas/recibidas}" state="Success" icon="sap-icon://survey" />
+          <ObjectStatus title="Promedio de Satisfacción" text="{consumo>/encuestas/promedio}" state="Success" icon="sap-icon://favorite" />
+        </HBox>
+        <Text text="{consumo>/encuestas/descripcion}" />
+      </Panel>
+
+    </VBox>
+  </Page>
+</mvc:View>

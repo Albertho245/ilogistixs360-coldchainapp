@@ -1,0 +1,56 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Transporte"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="transportePage"
+    title="Transporte"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    backgroundDesign="Solid">
+
+    <content>
+      <VBox class="sapUiMediumMargin">
+
+
+        <!-- PANEL DE KPIs -->
+        <HBox class="sapUiSmallMarginBottom" justifyContent="SpaceAround">
+          <ObjectStatus title="Total Entregas Hoy" text="{transporte>/resumen/entregasTotales}" state="Success" icon="sap-icon://shipping-status" />
+          <ObjectStatus title="Pendientes" text="{transporte>/resumen/entregasPendientes}" state="Warning" icon="sap-icon://lateness" />
+          <ObjectStatus title="Fallidas" text="{transporte>/resumen/entregasFallidas}" state="Error" icon="sap-icon://decline" />
+        </HBox>
+
+        <!-- PANEL DETALLES DE SISTEMA -->
+        <Panel headerText="Monitoreo del Sistema de Transporte">
+          <HBox justifyContent="SpaceAround">
+            <ObjectStatus title="Temperatura" text="{transporte>/sistema/temperatura}" state="Success" icon="sap-icon://temperature" />
+            <ObjectStatus title="Conectividad" text="{transporte>/sistema/conexion}" state="Success" icon="sap-icon://connected" />
+            <ObjectStatus title="Sensores Activos" text="{transporte>/sistema/sensoresActivos}" state="Information" icon="sap-icon://activity-individual" />
+          </HBox>
+        </Panel>
+
+        <!-- PANEL UBICACIÓN -->
+        <Panel headerText="Ubicación de Entrega">
+          <VBox class="sapUiSmallMargin">
+            <Text text="Dirección actual: {transporte>/ubicacion/direccion}" />
+            <Text text="Estado: {transporte>/ubicacion/estado}" />
+            <Text text="Tiempo estimado: {transporte>/ubicacion/tiempoEstimado}" />
+            <Image src="img/map-placeholder.png" width="100%" height="200px" densityAware="false" class="sapUiSmallMarginTop" />
+          </VBox>
+        </Panel>
+
+        <!-- PANEL OPERACIONES -->
+        <Panel headerText="Acciones Rápidas" expandable="true" expanded="true">
+          <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+            <Button text="Ver Stock" type="Emphasized" icon="sap-icon://inventory" press=".onViewStock" />
+            <Button text="Registrar Venta" type="Accept" icon="sap-icon://sales-order" press=".onRegisterSale" />
+            <Button text="Actualizar Estado" type="Default" icon="sap-icon://synchronize" press=".onRefreshStatus" />
+          </HBox>
+        </Panel>
+
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

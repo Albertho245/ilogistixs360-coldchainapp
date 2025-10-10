@@ -1,0 +1,66 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Login"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="loginPage"
+    title="Login"
+    class="sapUiContentPadding"
+    backgroundDesign="Solid">
+
+    <VBox
+      id="loginVBox"
+      alignItems="Center"
+      justifyContent="Center"
+      class="sapUiLargeMarginTop sapUiLargeMarginBottom">
+
+      <Image
+        src="img/logo_logist.jpg"
+        width="220px"
+        height="auto"
+        alt="Logo iLogistixs 360"
+        class="sapUiMediumMarginBottom sapUiMediumMarginTop" />
+
+      <!-- TÍTULO -->
+      <Title
+        id="loginTitle"
+        text="Acceder"
+        level="H2"
+        class="sapUiTinyMarginBottom" />
+
+      <!-- CAMPOS DE USUARIO -->
+      <Input
+        id="usernameInput"
+        placeholder="Usuario"
+        width="300px"
+        liveChange=".onInputChange" />
+
+      <Input
+        id="passwordInput"
+        placeholder="Contraseña"
+        type="Password"
+        width="300px"
+        class="sapUiSmallMarginTop"
+        liveChange=".onInputChange" />
+
+      <Button
+        id="loginButton"
+        text="Iniciar Sesión"
+        type="Emphasized"
+        press=".onLoginPress"
+        class="sapUiSmallMarginTop"
+        enabled="false" />
+
+      <!-- MENSAJE DE ERROR -->
+      <MessageStrip
+        id="loginMessage"
+        text=""
+        type="Error"
+        visible="false"
+        class="sapUiSmallMarginTop" />
+
+    </VBox>
+  </Page>
+</mvc:View>

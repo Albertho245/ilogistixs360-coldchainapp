@@ -1,0 +1,52 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Inicio"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="inicioPage"
+    backgroundDesign="List"
+    title="Bienvenido">
+
+    <VBox
+      class="sapUiLargeMargin"
+      alignItems="Center"
+      justifyContent="Center">
+
+      <Image
+        src="img/logo_logist.jpg"
+        width="440px"
+        height="auto"
+        alt="Logo iLogistixs 360"
+        class="sapUiMediumMarginBottom sapUiMediumMarginTop" />
+
+
+
+      <!-- CONTENEDOR DE TILES -->
+      <FlexBox
+        id="inicioTilesBox"
+        wrap="Wrap"
+        justifyContent="Center"
+        alignItems="Start"
+        class="sapUiMediumMarginTop"
+        fitContainer="true"
+        items="{
+          path: 'inicio>/tiles'
+        }">
+
+        <GenericTile
+          class="sapUiSmallMargin sapUiSizeCompact"
+          header="{inicio>header}"
+          subheader="{inicio>subheader}"
+          press=".onTilePress">
+
+          <TileContent>
+            <ImageContent src="{inicio>icon}" />
+          </TileContent>
+        </GenericTile>
+      </FlexBox>
+
+    </VBox>
+  </Page>
+</mvc:View>

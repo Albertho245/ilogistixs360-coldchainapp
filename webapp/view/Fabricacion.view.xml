@@ -1,0 +1,47 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Fabricacion"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="fabricacionPage"
+    title="Fabricación"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    showHeader="true">
+
+    <VBox id="fabricacionVBox" class="sapUiSmallMargin">
+
+      <!-- ENCABEZADO -->
+      <Title text="Resumen de Producción" level="H2" class="sectionTitle" />
+
+      <!-- INDICADORES DE PRODUCCIÓN -->
+      <Panel headerText="Indicadores de Producción" class="customPanel">
+        <HBox justifyContent="SpaceBetween">
+          <ObjectStatus title="Lotes Producidos" text="{fabricacion>/produccion/lotesProducidos}" state="Success" />
+          <ObjectStatus title="Lotes en Proceso" text="{fabricacion>/produccion/lotesEnProceso}" state="Information" />
+          <ObjectStatus title="Lotes Rechazados" text="{fabricacion>/produccion/lotesRechazados}" state="Error" />
+        </HBox>
+      </Panel>
+
+      <!-- ESTADO DE LA PLANTA -->
+      <Title text="Estado de la Planta" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel headerText="Monitoreo de Planta" class="customPanel">
+        <HBox justifyContent="SpaceAround">
+          <ObjectStatus title="Temperatura" text="{fabricacion>/planta/temperatura}" state="Success" icon="sap-icon://temperature" />
+          <ObjectStatus title="Máquinas Activas" text="{fabricacion>/planta/maquinasActivas}" state="Information" icon="sap-icon://machine" />
+          <ObjectStatus title="Última Inspección" text="{fabricacion>/planta/ultimaInspeccion}" state="Success" icon="sap-icon://inspection" />
+        </HBox>
+      </Panel>
+
+      <!-- ACCIONES -->
+      <HBox justifyContent="Center" class="sapUiMediumMarginTop">
+        <Button text="Iniciar Lote" type="Emphasized" icon="sap-icon://play" press=".onIniciarLote" />
+        <Button text="Control de Calidad" type="Accept" icon="sap-icon://inspection" press=".onControlCalidad" class="sapUiTinyMarginBegin" />
+      </HBox>
+
+     
+    </VBox>
+  </Page>
+</mvc:View>

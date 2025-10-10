@@ -1,0 +1,204 @@
+/* ============================================================
+   🌍 FONDO GLOBAL (Exterior)
+   ============================================================ */
+html,
+body,
+.sapUiBody,
+.sapMAppBG {
+  height: 100%;
+  background-color: #0a6ebd !important; /* Azul exterior corporativo */
+  background-image: none !important;
+}
+
+/* ============================================================
+   🧭 CONTENEDOR PRINCIPAL (interior)
+   ============================================================ */
+.sapMPage {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(240,248,255,0.92) 100%), 
+              url("../img/bg_app_1920x1080.png") no-repeat center bottom;
+  background-size: cover;
+  border-radius: 18px;
+  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  width: 90%;
+  transition: all 0.3s ease;
+}
+
+.sapMPage:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================================
+   ✨ TÍTULOS PRINCIPALES
+   ============================================================ */
+#inicioTitle {
+  color: #ffffff !important;
+  font-weight: 800;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+#inicioSubtitle {
+  color: #eaf6ff !important;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================================
+   🧱 TILES (tarjetas principales del dashboard)
+   ============================================================ */
+.sapMGT {
+  border-radius: 14px !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff !important;
+  width: 190px !important;
+  height: 165px !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.sapMGT:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+}
+
+.sapMGTContentImage img,
+.sapMGTIconImage {
+  width: 48px !important;
+  height: 48px !important;
+  margin-top: 0.6rem;
+  color: #0a6ebd !important;
+}
+
+.sapMGTSubHdrTxt {
+  color: #5d6d7e !important;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   📦 PANELES SECUNDARIOS (para otras vistas)
+   ============================================================ */
+.customPanel {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: #ffffffd9;
+  padding: 1rem 1.2rem;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+.customPanel:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   🧩 BOTONES
+   ============================================================ */
+.customButton {
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #007aff, #00b0f0);
+  color: white !important;
+  border: none;
+  transition: 0.3s;
+}
+
+.customButton:hover {
+  background: linear-gradient(90deg, #0095ff, #00c4ff);
+  box-shadow: 0 0 10px rgba(0, 153, 230, 0.6);
+}
+
+.customButton + .customButton {
+  margin-left: 0.5rem;
+}
+
+/* ============================================================
+   🧾 TÍTULOS DE SECCIÓN
+   ============================================================ */
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1b365d;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   🧭 HEADER SUPERIOR
+   ============================================================ */
+.sapMBar {
+  background: linear-gradient(90deg, #0b4a80, #0a6ebd) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   🧷 LOGO PERSONALIZADO (solo entorno local)
+   ============================================================ */
+.sapUshellShellHeadItm.sapUshellShellHeadItmLogo img {
+  content: url("img/logo_logist.jpg") !important;
+  width: 130px !important;
+  height: auto !important;
+  margin-left: 10px !important;
+}
+
+/* ============================================================
+   🧭 LAYOUT GENERAL
+   ============================================================ */
+.sapMPage > .sapMPageScroll {
+  padding: 2rem;
+}
+
+.sapMNavItem {
+  border-radius: 16px;
+}
+
+/* ============================================================
+   💡 ANIMACIONES
+   ============================================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sapMGT,
+.customPanel,
+.customButton {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+#loginVBox {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#loginPage {
+  background-image: url("../img/bg_app_1920x1080.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ============================================================
+   🎨 COLOR DE TEXTO EN HEADERS (Page titles / Toolbar)
+   ============================================================ */
+.sapMBar .sapMBarLeft .sapMTitle,
+.sapMBar .sapMBarMiddle .sapMTitle,
+.sapMBar .sapMBarRight .sapMTitle {
+  color: #ffffff !important;    /* Negrita ligera para legibilidad */
+}
+
+.sapMBar .sapMBtnInner > span {
+  color: #ffffff !important;      /* Botones del header */
+}

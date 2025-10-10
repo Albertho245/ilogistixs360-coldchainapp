@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>iLogistixs360</title>
+    <style>
+        html, body, body > div, #container, #container-uiarea {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <script
+        id="sap-ui-bootstrap"
+        src="resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-resourceroots='{
+            "COLDCHAINAPP": "./"
+        }'
+        data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-frame-options="trusted">
+    </script>
+
+    <link rel="icon" type="image/png" href="img/favicon.jpg" />
+
+</head>
+
+<body class="sapUiBody sapUiSizeCompact" id="content">
+    <div
+        data-sap-ui-component
+        data-name="COLDCHAINAPP"
+        data-id="container"
+        data-settings='{"id" : "COLDCHAINAPP"}'
+        data-handle-validation="true">
+    </div>
+</body>
+</html>

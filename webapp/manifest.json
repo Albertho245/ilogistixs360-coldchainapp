@@ -1,0 +1,171 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "COLDCHAINAPP",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.5",
+      "toolsId": "5ee96f38-a4b2-4d4d-abf9-3800b14eed7f"
+    }
+  },
+
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.139.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "COLDCHAINAPP.i18n.i18n"
+        }
+      }
+    },
+
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "rootApp",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "COLDCHAINAPP.view",
+        "async": true
+      },
+
+      "routes": [
+        {
+          "name": "RouteLogin",
+          "pattern": "",
+          "target": ["TargetLogin"],
+          "transition": "fade"
+        },
+        {
+          "name": "RouteInicio",
+          "pattern": "Inicio",
+          "target": ["TargetInicio"],
+          "transition": "fade"
+        },
+        {
+          "name": "RouteTransporte",
+          "pattern": "transporte",
+          "target": ["TargetTransporte"],
+          "transition": "slide"
+        },
+        {
+          "name": "RouteFabricacion",
+          "pattern": "fabricacion",
+          "target": ["TargetFabricacion"],
+          "transition": "slide"
+        },
+        {
+          "name": "RouteAlmacenaje",
+          "pattern": "almacenaje",
+          "target": ["TargetAlmacenaje"],
+          "transition": "flip"
+        },
+        {
+          "name": "RouteDistribucion",
+          "pattern": "distribucion",
+          "target": ["TargetDistribucion"],
+          "transition": "show"
+        },
+        {
+          "name": "RouteConsumo",
+          "pattern": "consumo",
+          "target": ["TargetConsumo"],
+          "transition": "slide"
+        }
+      ],
+
+      "targets": {
+        "TargetLogin": {
+          "id": "LoginView",
+          "name": "Login",
+          "viewType": "XML"
+        },
+        "TargetInicio": {
+          "id": "InicioView",
+          "name": "Inicio",
+          "viewType": "XML"
+        },
+        "TargetTransporte": {
+          "id": "TransporteView",
+          "name": "Transporte",
+          "viewType": "XML"
+        },
+        "TargetFabricacion": {
+          "id": "FabricacionView",
+          "name": "Fabricacion",
+          "viewType": "XML"
+        },
+        "TargetAlmacenaje": {
+          "id": "AlmacenajeView",
+          "name": "Almacenaje",
+          "viewType": "XML"
+        },
+        "TargetDistribucion": {
+          "id": "DistribucionView",
+          "name": "Distribucion",
+          "viewType": "XML"
+        },
+        "TargetConsumo": {
+          "id": "ConsumoView",
+          "name": "Consumo",
+          "viewType": "XML"
+        }
+      }
+    },
+
+    "rootView": {
+      "viewName": "COLDCHAINAPP.view.App",
+      "type": "XML",
+      "id": "rootApp",
+      "async": true
+    }
+  }
+}

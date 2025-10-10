@@ -1,0 +1,39 @@
+{
+  "tiles": [
+    {
+      "id": "fabricacion",
+      "header": "Fabricación",
+      "subheader": "Proceso de producción",
+      "icon": "sap-icon://factory",
+      "route": "fabricacion"
+    },
+    {
+      "id": "almacenaje",
+      "header": "Almacenaje",
+      "subheader": "Control de inventario",
+      "icon": "sap-icon://shipping-status",
+      "route": "almacenaje"
+    },
+    {
+      "id": "distribucion",
+      "header": "Distribución",
+      "subheader": "Transporte y entrega",
+      "icon": "sap-icon://shipping-status",
+      "route": "distribucion"
+    },
+    {
+      "id": "consumo",
+      "header": "Consumo",
+      "subheader": "Recepción del cliente",
+      "icon": "sap-icon://meal",
+      "route": "consumo"
+    },
+    {
+      "id": "transporte",
+      "header": "Transporte",
+      "subheader": "Seguimiento en ruta",
+      "icon": "sap-icon://map",
+      "route": "transporte"
+    }
+  ]
+}

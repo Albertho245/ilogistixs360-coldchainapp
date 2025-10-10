@@ -1,0 +1,66 @@
+<mvc:View
+  controllerName="COLDCHAINAPP.controller.Almacenaje"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true">
+
+  <Page
+    id="almacenajePage"
+    title="Almacenaje"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    showHeader="true">
+
+    <VBox class="sapUiSmallMargin sapUiResponsiveMargin">
+
+
+      <!-- SECCIÓN RECEPCIÓN -->
+      <Title text="Recepción de Productos" level="H2" class="sectionTitle" />
+      <Panel class="customPanel" headerText="Recepción">
+        <Text text="{almacenaje>/recepcion/descripcion}" class="sapUiTinyMarginBottom"/>
+        <ObjectStatus
+          title="Estado de Recepción"
+          text="{almacenaje>/recepcion/estado}"
+          state="{almacenaje>/recepcion/estadoColor}"
+          icon="sap-icon://complete" />
+      </Panel>
+
+      <!-- SECCIÓN TEMPERATURA -->
+      <Title text="Control de Temperatura" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel class="customPanel" headerText="Monitoreo de Temperatura">
+        <HBox justifyContent="SpaceAround" alignItems="Center">
+          <ObjectStatus
+            title="Temperatura Actual"
+            text="{almacenaje>/temperatura/actual}"
+            state="{almacenaje>/temperatura/estadoColor}"
+            icon="sap-icon://temperature" />
+          <ObjectStatus
+            title="Sistema"
+            text="{almacenaje>/temperatura/sistema}"
+            state="{almacenaje>/temperatura/sistemaColor}"
+            icon="sap-icon://sys-monitor" />
+        </HBox>
+        <Text text="{almacenaje>/temperatura/descripcion}" class="sapUiTinyMarginTop"/>
+      </Panel>
+
+      <!-- SECCIÓN INVENTARIO -->
+      <Title text="Gestión de Inventario" level="H2" class="sectionTitle sapUiSmallMarginTop" />
+      <Panel class="customPanel" headerText="Inventario Actual">
+        <HBox justifyContent="SpaceBetween">
+          <ObjectStatus
+            title="Ubicaciones Disponibles"
+            text="{almacenaje>/inventario/ubicaciones}"
+            state="Information"
+            icon="sap-icon://shipping-status" />
+          <ObjectStatus
+            title="Nivel de Stock"
+            text="{almacenaje>/inventario/stock}"
+            state="{almacenaje>/inventario/estadoColor}"
+            icon="sap-icon://inventory" />
+        </HBox>
+        <Text text="{almacenaje>/inventario/descripcion}" class="sapUiTinyMarginTop"/>
+      </Panel>
+
+    </VBox>
+  </Page>
+</mvc:View>
