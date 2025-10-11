@@ -9,40 +9,68 @@
     title="Transporte"
     showNavButton="true"
     navButtonPress=".onNavBack"
-    backgroundDesign="Solid">
+    backgroundDesign="List">
 
     <content>
       <VBox class="sapUiMediumMargin">
 
-
-        <!-- PANEL DE KPIs -->
-        <HBox class="sapUiSmallMarginBottom" justifyContent="SpaceAround">
-          <ObjectStatus title="Total Entregas Hoy" text="{transporte>/resumen/entregasTotales}" state="Success" icon="sap-icon://shipping-status" />
-          <ObjectStatus title="Pendientes" text="{transporte>/resumen/entregasPendientes}" state="Warning" icon="sap-icon://lateness" />
-          <ObjectStatus title="Fallidas" text="{transporte>/resumen/entregasFallidas}" state="Error" icon="sap-icon://decline" />
-        </HBox>
-
-        <!-- PANEL DETALLES DE SISTEMA -->
-        <Panel headerText="Monitoreo del Sistema de Transporte">
-          <HBox justifyContent="SpaceAround">
-            <ObjectStatus title="Temperatura" text="{transporte>/sistema/temperatura}" state="Success" icon="sap-icon://temperature" />
-            <ObjectStatus title="Conectividad" text="{transporte>/sistema/conexion}" state="Success" icon="sap-icon://connected" />
-            <ObjectStatus title="Sensores Activos" text="{transporte>/sistema/sensoresActivos}" state="Information" icon="sap-icon://activity-individual" />
+        <Panel headerText="Resumen General" class="sapUiNoContentPadding" backgroundDesign="Transparent">
+          <HBox justifyContent="SpaceAround" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+            <ObjectStatus title="Total Entregas" text="{transporte>/resumen/entregasTotales}" state="Success" icon="sap-icon://shipping-status" />
+            <ObjectStatus title="Pendientes" text="{transporte>/resumen/entregasPendientes}" state="Warning" icon="sap-icon://lateness" />
+            <ObjectStatus title="Fallidas" text="{transporte>/resumen/entregasFallidas}" state="Error" icon="sap-icon://decline" />
           </HBox>
         </Panel>
 
-        <!-- PANEL UBICACIÓN -->
-        <Panel headerText="Ubicación de Entrega">
+        <Panel headerText="Estado General del Transporte" class="sapUiSmallMarginTop" backgroundDesign="Solid">
+          <HBox justifyContent="SpaceAround" class="sapUiSmallMarginBottom">
+            <ObjectStatus title="Temperatura" text="{transporte>/sistema/temperatura}" state="Success" icon="sap-icon://temperature" />
+            <ObjectStatus title="Clima" text="{transporte>/sistema/clima}" state="Information" icon="sap-icon://cloud" />
+            <ObjectStatus title="Sensores Activos" text="{transporte>/sistema/sensoresActivos}" state="Information" icon="sap-icon://activity-individual" />
+            <ObjectStatus title="Vehículos OK" text="{transporte>/vehiculos/vehiculosOK}" state="Success" icon="sap-icon://car-rental" />
+          </HBox>
+        </Panel>
+
+        <Panel headerText="Monitoreo de Entregas" backgroundDesign="Solid">
+          <HBox justifyContent="SpaceAround">
+            <ObjectStatus title="Camiones Activos" text="{transporte>/entregas/camionesActivos}" state="Success" icon="sap-icon://shipping-status" />
+            <ObjectStatus title="En Proceso" text="{transporte>/entregas/entregasEnProceso}" state="Information" icon="sap-icon://journey-arrive" />
+          </HBox>
+
+          <!-- 👇 ahora usa 'resumen/entregasPendientes' para que el texto coincida -->
+          <ProgressIndicator
+            percentValue="{
+              parts: [{path: 'transporte>/resumen/entregasPendientes'}],
+              formatter: '.formatProgress'
+            }"
+            displayValue="{transporte>/resumen/entregasPendientes} Entregas Restantes"
+            state="Success"
+            class="sapUiSmallMarginTop" />
+          <Text text="{transporte>/entregas/monitoreo}" class="sapUiTinyMarginTop sapUiSmallMarginBottom" />
+        </Panel>
+
+        <Panel headerText="Condiciones de Rutas" backgroundDesign="Transparent">
+          <HBox justifyContent="SpaceEvenly">
+            <ObjectStatus title="Rutas Estables" text="{transporte>/rutas/estables}" state="Success" icon="sap-icon://map" />
+            <ObjectStatus title="Con Demoras" text="{transporte>/rutas/demoras}" state="Error" icon="sap-icon://lateness" />
+          </HBox>
+          <Text text="{transporte>/rutas/detalle}" class="sapUiTinyMarginTop" />
+        </Panel>
+
+        <Panel headerText="Ubicación Actual" backgroundDesign="Solid" class="sapUiMediumMarginTop">
           <VBox class="sapUiSmallMargin">
-            <Text text="Dirección actual: {transporte>/ubicacion/direccion}" />
+            <Text text="Dirección: {transporte>/ubicacion/direccion}" />
             <Text text="Estado: {transporte>/ubicacion/estado}" />
-            <Text text="Tiempo estimado: {transporte>/ubicacion/tiempoEstimado}" />
-            <Image src="img/map-placeholder.png" width="100%" height="200px" densityAware="false" class="sapUiSmallMarginTop" />
+            <Text text="Tiempo Estimado: {transporte>/ubicacion/tiempoEstimado}" />
+            <Image 
+              src="{transporte>/ubicacion/mapa}" 
+              width="100%" 
+              densityAware="false"
+              style="aspect-ratio: 16/9;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.25);margin-top:10px;" />
           </VBox>
         </Panel>
 
-        <!-- PANEL OPERACIONES -->
-        <Panel headerText="Acciones Rápidas" expandable="true" expanded="true">
+        <Panel headerText="Acciones Rápidas" expandable="true" expanded="true" backgroundDesign="Transparent" class="sapUiMediumMarginTop">
           <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
             <Button text="Ver Stock" type="Emphasized" icon="sap-icon://inventory" press=".onViewStock" />
             <Button text="Registrar Venta" type="Accept" icon="sap-icon://sales-order" press=".onRegisterSale" />

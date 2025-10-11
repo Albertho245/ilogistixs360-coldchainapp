@@ -20,7 +20,17 @@
           <ObjectStatus title="Camiones Activos" text="{distribucion>/entregas/camionesActivos}" state="Success" icon="sap-icon://shipping-status" />
           <ObjectStatus title="Entregas en Proceso" text="{distribucion>/entregas/entregasEnProceso}" state="Information" icon="sap-icon://journey-arrive" />
         </HBox>
-        <Text text="{distribucion>/entregas/monitoreo}" />
+
+        <ProgressIndicator
+          percentValue="{
+            parts: [{path: 'distribucion>/entregas/entregasEnProceso'}],
+            formatter: '.formatProgress'
+          }"
+          displayValue="{distribucion>/entregas/entregasEnProceso} Entregas Restantes"
+          state="Success"
+          class="sapUiSmallMarginTop" />
+
+        <Text text="{distribucion>/entregas/monitoreo}" class="sapUiTinyMarginTop" />
       </Panel>
 
       <!-- SECCIÓN: Estado de Vehículos -->

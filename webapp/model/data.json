@@ -1,0 +1,22 @@
+{
+  "transporte": {
+    "rutasActivas": 12,
+    "entregasPendientes": 8,
+    "porcentajeExito": "96%",
+    "vehiculos": [
+      { "id": "TRK-001", "estado": "En ruta", "ubicacion": "Guadalajara", "temperatura": "4°C" },
+      { "id": "TRK-002", "estado": "Entregado", "ubicacion": "Zapopan", "temperatura": "2°C" },
+      { "id": "TRK-003", "estado": "Retraso", "ubicacion": "Tlaquepaque", "temperatura": "7°C" }
+    ]
+  },
+  "fabricacion": {
+    "lotesProducidos": 15,
+    "lotesEnProceso": 2,
+    "lotesRechazados": 0
+  },
+  "distribucion": {
+    "camionesActivos": 3,
+    "entregasEnProceso": 11,
+    "rutasDemora": 2
+  }
+}

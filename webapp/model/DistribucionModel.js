@@ -22,7 +22,6 @@ sap.ui.define([
           detalle: "El sistema analiza tráfico y clima para ajustar las rutas automáticamente."
         }
       };
-
       return new JSONModel(oData);
     }
   };
