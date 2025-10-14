@@ -2,57 +2,102 @@
   controllerName="COLDCHAINAPP.controller.Distribucion"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m"
+  xmlns:core="sap.ui.core"
   displayBlock="true">
 
   <Page
-    id="distribucionPage"
-    title="Distribución"
+    id="pageDistribucion"
+    title="Mi Ruta de Distribución"
+    backgroundDesign="Solid"
     showNavButton="true"
-    navButtonPress=".onNavBack"
-    showHeader="true">
+    navButtonPress=".onNavBack">
 
-    <VBox class="sapUiSmallMargin">
+    <content>
+      <VBox class="sapUiSmallMargin">
 
-      <!-- SECCIÓN: Entregas en Ruta -->
-      <Title text="Entregas en Ruta" level="H2" class="sectionTitle" />
-      <Panel headerText="Monitoreo de Entregas" class="customPanel">
-        <HBox justifyContent="SpaceAround">
-          <ObjectStatus title="Camiones Activos" text="{distribucion>/entregas/camionesActivos}" state="Success" icon="sap-icon://shipping-status" />
-          <ObjectStatus title="Entregas en Proceso" text="{distribucion>/entregas/entregasEnProceso}" state="Information" icon="sap-icon://journey-arrive" />
+        <!-- ENCABEZADO DE INFORMACIÓN DEL CONDUCTOR -->
+        <ObjectHeader
+          title="{distribucion>/conductor/nombre}"
+          intro="{distribucion>/conductor/unidad}"
+          number="{distribucion>/resumen/progreso}"
+          numberUnit="completado"
+          icon="sap-icon://shipping-status"
+          class="sapUiSmallMarginBottom" />
+
+        <!-- RESUMEN DE RUTA -->
+        <HBox justifyContent="SpaceAround" class="sapUiSmallMarginBottom">
+          <ObjectStatus
+            title="Total de Paradas"
+            text="{distribucion>/resumen/totalParadas}" />
+          <ObjectStatus
+            title="Completadas"
+            text="{distribucion>/resumen/completadas}"
+            state="Success" />
+          <ObjectStatus
+            title="Pendientes"
+            text="{distribucion>/resumen/pendientes}"
+            state="Warning" />
         </HBox>
 
-        <ProgressIndicator
-          percentValue="{
-            parts: [{path: 'distribucion>/entregas/entregasEnProceso'}],
-            formatter: '.formatProgress'
-          }"
-          displayValue="{distribucion>/entregas/entregasEnProceso} Entregas Restantes"
-          state="Success"
-          class="sapUiSmallMarginTop" />
+        <!-- MAPA DINÁMICO (centrado sin modificar su tamaño) -->
+        <Panel
+          headerText="Ruta Asignada (Mapa en Tiempo Real)"
+          expandable="false"
+          class="sapUiNoContentPadding sapUiSmallMarginBottom">
+          <core:HTML
+            id="mapFrame"
+            content="{distribucion>/mapaEmbed}"
+            style="display: block; margin: 0 auto;"
+            class="sapUiSmallMarginBottom" />
+        </Panel>
 
-        <Text text="{distribucion>/entregas/monitoreo}" class="sapUiTinyMarginTop" />
-      </Panel>
+        <!-- PANEL DEL DESTINO ACTUAL -->
+        <Panel
+          headerText="Destino Actual"
+          class="sapUiSmallMarginBottom"
+          expandable="false"
+          binding="{distribucion>/destinoActual}">
+          <VBox>
+            <Text
+              text="{distribucion>cliente}"
+              class="sapMTitle sapMTitleLarge sapUiSmallMarginBottom" />
+            <Text text="{distribucion>direccion}" />
+            <Text text="Hora estimada: {distribucion>horaEstimada}" />
+            <Text text="Estado: {distribucion>estado}" />
+            <Button
+              text="Marcar como Entregado"
+              icon="sap-icon://accept"
+              type="Accept"
+              press=".onCompletarEntrega"
+              class="sapUiSmallMarginTop" />
+          </VBox>
+        </Panel>
 
-      <!-- SECCIÓN: Estado de Vehículos -->
-      <Title text="Estado de Vehículos" level="H2" class="sectionTitle sapUiSmallMarginTop" />
-      <Panel headerText="Condición de Vehículos" class="customPanel">
-        <HBox justifyContent="SpaceAround">
-          <ObjectStatus title="Vehículos OK" text="{distribucion>/vehiculos/vehiculosOK}" state="Success" icon="sap-icon://accept" />
-          <ObjectStatus title="Requieren Mantenimiento" text="{distribucion>/vehiculos/mantenimiento}" state="Warning" icon="sap-icon://alert" />
-        </HBox>
-        <Text text="{distribucion>/vehiculos/detalle}" />
-      </Panel>
+        <!-- LISTA DE PARADAS -->
+        <List
+          headerText="Paradas del Día"
+          items="{distribucion>/paradas}">
+          <CustomListItem>
+            <HBox justifyContent="SpaceBetween" alignItems="Center">
+              <VBox>
+                <ObjectIdentifier
+                  title="{distribucion>cliente}"
+                  text="{distribucion>direccion}" />
+                <ObjectStatus
+                  text="{distribucion>estado}"
+                  state="{distribucion>estadoColor}" />
+                <Text text="Hora estimada: {distribucion>horaEstimada}" />
+              </VBox>
+              <Button
+                text="Ir"
+                icon="sap-icon://navigation-right-arrow"
+                type="Transparent"
+                enabled="false" />
+            </HBox>
+          </CustomListItem>
+        </List>
 
-      <!-- SECCIÓN: Rutas y Condiciones -->
-      <Title text="Rutas y Condiciones" level="H2" class="sectionTitle sapUiSmallMarginTop" />
-      <Panel headerText="Estado de Rutas" class="customPanel">
-        <HBox justifyContent="SpaceBetween">
-          <ObjectStatus title="Rutas Estables" text="{distribucion>/rutas/estables}" state="Success" icon="sap-icon://map" />
-          <ObjectStatus title="Rutas con Demoras" text="{distribucion>/rutas/demoras}" state="Error" icon="sap-icon://lateness" />
-        </HBox>
-        <Text text="{distribucion>/rutas/detalle}" />
-      </Panel>
-
-    </VBox>
+      </VBox>
+    </content>
   </Page>
 </mvc:View>
