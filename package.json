@@ -13,6 +13,9 @@
     "@ui5/cli": "^4.0.16",
     "@sap/ux-ui5-tooling": "1"
   },
+  "engines": {
+    "node": "20.0.0"
+  },
   "scripts": {
     "start": "fiori run --open \"test/flp.html#app-preview\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flp.html#app-preview\"",
