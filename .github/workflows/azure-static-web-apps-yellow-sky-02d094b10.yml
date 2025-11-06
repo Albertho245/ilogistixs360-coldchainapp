@@ -32,6 +32,8 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "dist" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+        env:
+          SAP_UI_CORE_PATH: "https://sdk.openui5.org/resources/sap-ui-core.js"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

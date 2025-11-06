@@ -8,15 +8,18 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
   "devDependencies": {
+    "@sap/ux-ui5-tooling": "1",
     "@ui5/cli": "^4.0.16",
-    "@sap/ux-ui5-tooling": "1"
+    "dotenv": "^17.2.3"
   },
   "engines": {
     "node": "20.11.0"
   },
   "scripts": {
+    "prebuild": "node scripts/replace-env.js",
+    "prestart": "node scripts/replace-env.js",
+    "prestart-local": "node scripts/replace-env.js",
     "start": "fiori run --open \"test/flp.html#app-preview\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flp.html#app-preview\"",
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
